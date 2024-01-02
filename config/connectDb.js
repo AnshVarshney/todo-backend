@@ -1,8 +1,10 @@
 import mongoose from "mongoose"
+import dotenv from 'dotenv'
+dotenv.config();
 
 const connectDb = async () => {
     try {
-        await mongoose.connect('mongodb://127.0.0.1/note-taking')
+        await mongoose.connect(process.env.MONGO_URL)
         console.log(`mongodb server running on ${mongoose.connection.host}`)
     } catch (error) {
         console.log(error)
